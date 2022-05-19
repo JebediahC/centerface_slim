@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 from PIL import Image, ImageDraw
+import datetime
 
 
 class VisionKit:
@@ -96,5 +97,20 @@ class VisionKit:
         keep = (hmax == heat).float()
         return heat * keep
 
+class Simple_logger:
+    def __init__(self, log_path="log.txt"):
+        self.log_path = log_path
+        f = open(self.log_path,'w')
+        f.write("Logger initilazed" +'\n')
+        f.close()
+    def log(self, text:str):
+        time_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        f = open(self.log_path,'a')
+        f.write('['+time_str+']'+text+'\n')
+        f.close()
+        print('['+time_str+']'+text)
+
 if __name__ == "__main__":
-    pass
+    logger = Simple_logger()
+    logger.log("log")
+    logger.log("log2")

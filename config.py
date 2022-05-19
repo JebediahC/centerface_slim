@@ -21,8 +21,11 @@ class Config:
     ])
 
     # dataset
-    dataroot = 'data/WIDER_train/WIDER_train/images'
-    annfile = 'data/retinaface_gt_v1.1/train/label.txt'
+    train_dataroot = 'data/WIDER_train/WIDER_train/images'
+    train_annfile = 'data/retinaface_gt_v1.1_adjusted/train/label.txt'
+
+    val_dataroot = 'data/WIDER_val/WIDER_val/images'
+    val_annfile = 'data/retinaface_gt_v1.1_adjusted/val/label.txt'
 
     # checkpoints
     checkpoints = 'checkpoints'
@@ -30,9 +33,9 @@ class Config:
     restore_model = 'final.pth'
 
     # training
-    epoch = 90
+    epoch = 200
     lr = 5e-4
-    batch_size = 4
+    batch_size = 32
     pin_memory = True
     num_workers = 0
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
